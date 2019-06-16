@@ -1,19 +1,19 @@
 const merge = require('./merge');
 
-function mergeSort(_list) {
-  const middle = Math.floor(_list.length / 2);
+function mergeSortTopDown(list) {
+  const middle = Math.floor(list.length / 2);
   let left, right;
 
-  if (_list.length <= 1)
-    return _list;
+  if (list.length <= 1)
+    return list;
 
-  left = _list.slice(0, middle);
-  right = _list.slice(middle);
+  left = list.slice(0, middle);
+  right = list.slice(middle);
 
-  left = mergeSort(left);
-  right = mergeSort(right);
+  left = mergeSortTopDown(left);
+  right = mergeSortTopDown(right);
 
   return merge(left, right);
 }
 
-module.exports = mergeSort;
+module.exports = mergeSortTopDown;
